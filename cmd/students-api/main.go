@@ -2,12 +2,15 @@ package main
 
 import "fmt"
 import "net/http"
-	 
-import "github.com/sharath666/students-api/internal/config"
+import "log"
+ 
+import "github.com/sharath666/students-api/cmd/students-api/internal/config"
 
 func main(){
 	//load config
 	cfg := config.MustLoad()
+
+	fmt.Printf("printing the cfg %s", cfg.Addr)
 	//database setup
 	//setup router
 	router := http.NewServeMux()
@@ -25,7 +28,8 @@ func main(){
 	err := server.ListenAndServe()
 
 	if err != nil {
-		log.Fatal("failed to start server")
+		log.Fatal("failed to start server %v", err)
+
 	}
 
 	fmt.Println("server started")

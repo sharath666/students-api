@@ -5,7 +5,7 @@ import "flag"
 
 import "github.com/ilyakaznacheev/cleanenv"
 type HTTPServer struct{
-	Addr string
+	Addr string 
 
 }
 
@@ -28,12 +28,12 @@ func MustLoad() *Config {
 		configPath = *flags
 
 		if configPath == "" {
-			log.Fatal("Config path is not set")
+			log.Fatalf("Config path is not set")
 		}
 	}
 
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		log.Fatal("config file does not exist: %s", configPath)
+		log.Fatalf("config file does not exist: %s", configPath)
 	}
 
 	var cfg Config 
